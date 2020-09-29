@@ -1,0 +1,33 @@
+import java.util.Scanner;
+public class lala {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int LuckyNumber = input.nextInt();
+        int id[] = new int[8];
+        int k=0;
+        for (int i = 1; i < 8; i++) {
+            id[i] = input.nextInt();
+        }
+        for(int i=1;i<8;i++){
+            if(id[i]==LuckyNumber){
+                k=id[i];
+                id[i]=id[0];
+                id[0]=k;
+            }
+        }
+            for(int m=1;m<8;m++){
+                for(int j=7;j>=m+1;j--){
+                    if (id[j] > id[j-1]) {
+                        k=id[j];
+                        id[j]=id[j-1];
+                        id[j-1]=k;
+                    }
+                }
+            }
+            for(int n=0;n<8;n++){
+                if(id[n]!=0) {
+                    System.out.print(id[n]);
+                }
+            }
+        }
+    }
