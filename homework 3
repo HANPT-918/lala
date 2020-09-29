@@ -1,0 +1,18 @@
+import java.util.Scanner;
+public class lala {
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        int hour,mintute;
+        hour= input.nextInt();
+        mintute= input.nextInt();
+        int durationH,durationM;
+        durationH=12-hour;
+        durationM=60-mintute;
+        if(durationH==0)
+            System.out.println(durationM);
+        else{
+            System.out.print(durationH);
+            System.out.println(" "+durationM);
+        }
+    }
+}
