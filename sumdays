@@ -1,0 +1,34 @@
+import java.util.Scanner;
+public class lala {
+    public static void main(String[] args){
+        int sumday=0;
+        System.out.print("请输入日期 年 月 日 ");
+        Scanner input = new Scanner(System.in);
+        int year=input.nextInt();
+        int month= input.nextInt();
+        int day= input.nextInt();
+        int i,j;
+        i=year%100;
+        j=year%4;
+        switch(month-1){
+            case 11: sumday+=30;
+            case 10: sumday+=31;
+            case 9:  sumday+=30;
+            case 8:  sumday+=31;
+            case 7:  sumday+=31;
+            case 6:  sumday+=30;
+            case 5:  sumday+=31;
+            case 4:  sumday+=30;
+            case 3:  sumday+=31;
+            case 2:  if(i!=0&&j==0)
+                        sumday+=29;
+                     else if(i==0&&j==0)
+                        sumday+=29;
+                     else
+                         sumday+=28;
+            case 1:  sumday+=31;
+        }
+        sumday+=day;
+        System.out.println("这是这一年的第"+sumday+"天");
+    }
+}
