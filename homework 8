@@ -3,31 +3,43 @@ public class lala {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int LuckyNumber = input.nextInt();
-        int id[] = new int[8];
-        int k=0;
-        for (int i = 1; i < 8; i++) {
-            id[i] = input.nextInt();
+        int id=input.nextInt();
+        int arr[]=new int[8];
+        double yv[]=new double[8];
+        int k,q;
+        for(int i=0;i<8;i++){
+            yv[i]=id%(Math.pow(10,7-i));
+            arr[i]=id/(int)(Math.pow(10,7-i));
+            id=(int)yv[i];
         }
-        for(int i=1;i<8;i++){
-            if(id[i]==LuckyNumber){
-                k=id[i];
-                id[i]=id[0];
-                id[0]=k;
-            }
-        }
-            for(int m=1;m<8;m++){
-                for(int j=7;j>=m+1;j--){
-                    if (id[j] > id[j-1]) {
-                        k=id[j];
-                        id[j]=id[j-1];
-                        id[j-1]=k;
+        for(int h=0;h<8;h++){
+            if(arr[h]==LuckyNumber){
+                for(int t=0;t<8;t++){
+                    if(arr[t]!=LuckyNumber){
+                        q=t;
+                        k=arr[h];
+                        arr[h]=arr[q];
+                        arr[q]=k;
+                        break;
                     }
                 }
             }
-            for(int n=0;n<8;n++){
-                if(id[n]!=0) {
-                    System.out.print(id[n]);
+        }
+        for(int m=1;m<8;m++){
+            if(arr[m]!=LuckyNumber){
+            for(int j=7;j>=m+1;j--){
+                    if (arr[j] > arr[j-1]) {
+                        k=arr[j];
+                        arr[j]=arr[j-1];
+                        arr[j-1]=k;
+                    }
                 }
             }
         }
+        for(int n=0;n<8;n++){
+            if(arr[n]!=0){
+                System.out.print(arr[n]);
+            }
+        }
     }
+}
