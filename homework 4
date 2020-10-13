@@ -1,21 +1,27 @@
 import java.util.Scanner;
-public class lala {
+public class study {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         int n=input.nextInt();
         int m= input.nextInt();
-        int arr[]=new int[m];
+        double arr[]=new double[m];
+        int brr[]=new int[m];
         int sumMoney=0;
         for(int i=0;i<m;i++){
-            arr[i]=input.nextInt();
-            sumMoney+=arr[i];
-            System.out.printf(".%d\n",i+1);
+            arr[i]= input.nextDouble();
         }
-        if(sumMoney<=n){
-            System.out.println("yes");
+        for(int i=0;i<m;i++){
+            brr[i]=(int)arr[i];
+        }
+        for(int i=0;i<m;i++){
+            sumMoney+=brr[i];
+        }
+        if(n>=sumMoney){
+            System.out.println("Yes");
         }
         else{
-            System.out.println("no");
+            System.out.println("No");
         }
     }
 }
+
