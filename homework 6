@@ -1,34 +1,39 @@
 import java.util.Scanner;
-public class lala {
+public class study {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int day= input.nextInt();
         int course[]= new int[day];
         int sum[]=new int[day];
         int times=0;
-        double yv[]=new double[5];
+        int yv[]=new int[5];
         for(int i=0;i<day;i++){
             course[i]=input.nextInt();
         }
         for(int j=0;j<day;j++){
             for(int k=0;k<5;k++){
-                yv[k]=course[j]%(10000/Math.pow(10,k));
-                if(yv[k]!=0)
-                    sum[j]+=1;
-                if(k==0)
-                    continue;
-                if(yv[k]==yv[k-1]) {
-                    sum[j] -= 1;
+                yv[k]=(int)(course[j]/(10000/Math.pow(10,k)));
+                if(yv[k]!=0){
+                    course[j]-=yv[k]*((int)(10000/Math.pow(10,k)));
+                }
+                if(yv[k]==0){
                     continue;
                 }
-                if(yv[k]==2){
-                    sum[j]-=1;
-                    continue;
+                if(yv[k]!=0){
+                    if(yv[k]==1){
+                        sum[j]+=2;
+                        if(k==0){
+                            continue;
+                        }
+                        if(yv[k-1]==1){
+                            sum[j]-=2;
+                        }
+                    }
                 }
             }
         }
         for(int m=0;m<day;m++){
-            times=times+sum[m];
+            times+=sum[m];
         }
         System.out.println(times);
     }
