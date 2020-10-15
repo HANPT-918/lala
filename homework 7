@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class lala {
+public class study{
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int x=input.nextInt();
@@ -7,25 +7,33 @@ public class lala {
         int m=input.nextInt();
         int d=input.nextInt();
         int n=0;
-        int l=0;
         int k;
-        for(int i=0;i<y-1;i++){
+        int a;
+        for(int i=1;i<=y-1;i++){
             if(i%4!=0){
                 n+=365;
-                l=1;
             }
             else if(i%100!=0){
                 n+=366;
-                l=0;
             }
-            else if(i%400==0){
+            else if(i%400!=0){
                 n+=365;
-                l=1;
             }
             else{
                 n+=366;
-                l=1;
             }
+        }
+        if(y%4!=0){
+            a=0;
+        }
+        else if(y%100!=0){
+            a=1;
+        }
+        else if(y%400!=0){
+            a=0;
+        }
+        else{
+            a=1;
         }
         switch(m-1){
             case 11:n+=30;
@@ -37,16 +45,21 @@ public class lala {
             case 5:n+=31;
             case 4:n+=30;
             case 3:n+=31;
-            case 2:if(l==1){
-                n+=28;
+            case 2:if(a==1){
+                n+=29;
             }
-                if(l==0){
-                    n+=31;
+                if(a==0){
+                    n+=28;
                 }
             case 1:n+=31;
         }
         n+=d;
         k=n%x;
-        System.out.println(k);
+        if(k==0){
+            System.out.println(x);
+        }
+       else{
+           System.out.println(k);
+        }
     }
 }
