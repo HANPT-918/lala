@@ -6,7 +6,11 @@ public class study {
         hour= input.nextInt();
         mintute= input.nextInt();
         int durationH,durationM;
-        if(hour<=13){
+        if(hour==13&&mintute==0){
+            durationH=0;
+            durationM=0;
+        }
+        else if(hour<=13){
             durationH=12-hour;
             durationM=60-mintute;
         }
@@ -17,7 +21,8 @@ public class study {
         if(durationH==0)
             System.out.println(durationM);
         else if(durationM==60){
-            System.out.println(durationH+1);
+            durationM=0;
+            System.out.println(durationH+1+" "+durationM);
         }
         else{
             System.out.print(durationH);
