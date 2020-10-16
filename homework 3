@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class study {
+public class Main {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         int hour,mintute;
@@ -10,7 +10,7 @@ public class study {
             durationH=0;
             durationM=0;
         }
-        else if(hour<=13){
+        else if(hour<13){
             durationH=12-hour;
             durationM=60-mintute;
         }
@@ -18,8 +18,14 @@ public class study {
             durationH=24-hour+13-1;
             durationM=60-mintute;
         }
-        if(durationH==0)
-            System.out.println(durationM);
+        if(durationH==0){
+            if(durationM==60){
+                System.out.println(durationH+1+" "+0);
+            }
+            else{
+                System.out.println(durationM);
+            }
+        }
         else if(durationM==60){
             durationM=0;
             System.out.println(durationH+1+" "+durationM);
@@ -30,3 +36,4 @@ public class study {
         }
     }
 }
+    
