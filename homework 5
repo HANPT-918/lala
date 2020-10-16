@@ -5,7 +5,7 @@ public class lala {
         long money= input.nextInt();
         long sc[]=new long[8];
         long j;
-        for(int i=1;i<8;i++){
+        for(int i=0;i<8;i++){
             if(money<(823543/(long)(Math.pow(7,i)))){
                 sc[i]=0;
                 continue;
@@ -14,6 +14,6 @@ public class lala {
             money=money%(823543/(long)(Math.pow(7,i)));
             sc[i]=j;
         }
-        System.out.printf("%d %d %d %d %d %d %d %d\n",sc[0],sc[1],sc[2],sc[3],sc[4],sc[5],sc[6],sc[7]);
+        System.out.printf("%d%d%d%d%d%d%d%d\n",sc[0],sc[1],sc[2],sc[3],sc[4],sc[5],sc[6],sc[7]);
     }
 }
