@@ -1,0 +1,26 @@
+import java.util.Scanner;
+public class Main{
+    static int n;
+    static double[] c=new double[4];
+    public  static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        double result=0;
+        int a=input.nextInt();
+        int b=input.nextInt();
+        n=input.nextInt();
+        for(int i=0;i<n+1;i++){
+            c[i]= input.nextDouble();
+        }
+        for(double i=a;i<b;i+=0.0001){
+            result+=f(i);
+        }
+        System.out.printf("%.1f",result);
+    }
+    public static double f(double x){
+        double result=0;
+        for(int i=n;i>=0;i--){
+            result+=c[n-i]*Math.pow(x,i);
+        }
+        return result*0.0001;
+    }
+}
