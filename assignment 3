@@ -1,0 +1,59 @@
+import java.util.Scanner;
+import java.util.Arrays;
+public class Main{
+    static int n;
+    static long max,min;
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        n=input.nextInt();
+        long x;
+        String[] arr=new String[n];
+        long[][] b=new long[n][100];
+        int[] length=new int[n];
+        long[] result=new long[n];
+        String w=input.nextLine();
+        for(int i=0;i<n;i++){
+           arr[i]= input.nextLine();
+        }
+        for(int i=0;i<n;i++){
+            length[i]=arr[i].length();
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<length[i];j++){
+                b[i][j]=(arr[i].charAt(j));
+            }
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<length[i];j++){
+                result[i]+=b[i][j]*Math.pow(length[i],j);
+            }
+        }
+        max=max(result)%998244353;
+        min=min(result)%998244353;
+//        for(int i=0;i<n;i++){
+//            System.out.print(result[i]%998244353+" ");
+//        }
+//       System.out.print(f(result[0]%998244353,result[1]%998244353));
+        x=f(result[0]%998244353,result[1]%998244353);
+        System.out.print(max/x+" "+min/x);
+    }
+    public static long f(long x,long y){
+        long m;
+        for(int i=0;;i++){
+            m=x%y;
+            if(m==0){
+                return y;
+            }
+            x=y;
+            y=m;
+        }
+    }
+    public static long min(long[] arr){
+        Arrays.sort(arr);
+        return arr[0];
+    }
+    public static long max(long[] arr){
+        Arrays.sort(arr);
+        return arr[n-1];
+    }
+}
