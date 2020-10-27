@@ -1,0 +1,73 @@
+import java.util.Scanner;
+public class water{
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+        int m = input.nextInt();
+        int[][] migong = new int[n][m];
+        String[] haha = new String[n];
+        String a= input.nextLine();
+        for(int i=0;i<n;i++){
+            haha[i]= input.nextLine();
+        }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                migong[i][j]=haha[i].charAt(j);
+//                System.out.print(migong[i][j]);
+            }
+//            System.out.println();
+        }
+        int row=1;
+        int line=1;
+        int[] Row=new int[1000];
+        int[] Line=new int[1000];
+        int x,y,z,w;
+        for(int i=0;;i++){
+            if(row==n&&line==m){
+                System.out.println("Yes");
+                for(int j=0;;j++){
+                    if(Row[j]==0){
+                        break;
+                    }
+                    System.out.printf("(%d,%d)",Row[j],Line[j]);
+                }
+                break;
+            }
+            else {
+                Row[i]=row;
+                x=row;
+                y=line;
+                Line[i]=line;
+                z=row;
+                w=line;
+            }
+            if((row<=n-1&&line-1<=m-1)){
+                if(migong[row][line-1]==67){
+                    z+=1;
+                }
+            }
+            if((row-1>=0)&&(row<=n-1&&line-1<=m-1)){
+                if(migong[row-1][line]==67){
+                    w+=1;
+                }
+            }
+            if((row-2>=0&&line-1>=0)){
+                if(migong[row-2][line-1]==67){
+                    z-=1;
+                }
+            }
+            if(row-1>=0&&line-2>=0){
+                if(migong[row-1][line-2]==67){
+                    w-=1;
+                }
+            }
+            if(z==x&&w==y){
+                System.out.println("No");
+                break;
+            }
+            migong[row-1][line-1]=87;
+            row=z;
+            line=w;
+        }
+    }
+}
